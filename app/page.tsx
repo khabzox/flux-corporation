@@ -2,16 +2,16 @@
 
 import { useState } from "react"
 import { DragDropContext, type DropResult } from "@hello-pangea/dnd"
-import Sidebar from "./components/Sidebar"
-import TopNavigation from "./components/TopNavigation"
-import KanbanBoard from "./components/KanbanBoard"
-import CalendarView from "./components/CalendarView"
-import TableView from "./components/TableView"
-import PreviewView from "./components/PreviewView"
-import FeedView from "./components/FeedView"
-import AnalyticsView from "./components/AnalyticsView"
-import CreateContentModal from "./components/CreateContentModal"
-import type { ContentItem, Column } from "./types"
+import Sidebar from "@/components/dashboard/Sidebar"
+import TopNavigation from "@/components/dashboard/TopNavigation"
+import KanbanBoard from "@/components/dashboard/KanbanBoard"
+import CalendarView from "@/components/dashboard/CalendarView"
+import TableView from "@/components/dashboard/TableView"
+import PreviewView from "@/components/dashboard/PreviewView"
+import FeedView from "@/components/dashboard/FeedView"
+import AnalyticsView from "@/components/dashboard/AnalyticsView"
+import CreateContentModal from "@/components/dashboard/CreateContentModal"
+import type { ContentItem, Column, CreateContentData } from "@/types"
 
 const initialColumns: Column[] = [
   {
@@ -22,11 +22,11 @@ const initialColumns: Column[] = [
         id: "1",
         title: "Post a Banner",
         description: "Create promotional banner for new product launch",
-        thumbnail: "/placeholder.svg?height=100&width=150",
+        thumbnail: "/person.png?height=100&width=150",
         scheduledDate: "2024-01-05",
         scheduledTime: "7:00 AM",
         platforms: ["tiktok", "instagram", "facebook"],
-        assignee: { name: "John Doe", avatar: "/placeholder.svg?height=32&width=32" },
+        assignee: { name: "John Doe", avatar: "/avatar.png?height=32&width=32" },
         comments: 0,
         status: "idea",
       },
@@ -34,11 +34,11 @@ const initialColumns: Column[] = [
         id: "2",
         title: "Post a Banner",
         description: "Social media campaign content",
-        thumbnail: "/placeholder.svg?height=100&width=150",
+        thumbnail: "/person.png?height=100&width=150",
         scheduledDate: "2024-01-12",
         scheduledTime: "7:00 AM",
         platforms: ["tiktok", "instagram", "facebook"],
-        assignee: { name: "Jane Smith", avatar: "/placeholder.svg?height=32&width=32" },
+        assignee: { name: "Jane Smith", avatar: "/avatar.png?height=32&width=32" },
         comments: 0,
         status: "idea",
       },
@@ -46,11 +46,11 @@ const initialColumns: Column[] = [
         id: "3",
         title: "Post a Banner",
         description: "Weekly newsletter content",
-        thumbnail: "/placeholder.svg?height=100&width=150",
+        thumbnail: "/person.png?height=100&width=150",
         scheduledDate: "2024-01-18",
         scheduledTime: "7:00 AM",
         platforms: ["tiktok", "instagram", "facebook"],
-        assignee: { name: "Mike Johnson", avatar: "/placeholder.svg?height=32&width=32" },
+        assignee: { name: "Mike Johnson", avatar: "/avatar.png?height=32&width=32" },
         comments: 0,
         status: "idea",
       },
@@ -64,11 +64,11 @@ const initialColumns: Column[] = [
         id: "4",
         title: "Post a Banner",
         description: "Instagram story series",
-        thumbnail: "/placeholder.svg?height=100&width=150",
+        thumbnail: "/person.png?height=100&width=150",
         scheduledDate: "2024-01-22",
         scheduledTime: "7:00 AM",
         platforms: ["tiktok", "instagram", "facebook"],
-        assignee: { name: "Sarah Wilson", avatar: "/placeholder.svg?height=32&width=32" },
+        assignee: { name: "Sarah Wilson", avatar: "/avatar.png?height=32&width=32" },
         comments: 0,
         status: "in-progress",
       },
@@ -76,11 +76,11 @@ const initialColumns: Column[] = [
         id: "5",
         title: "Post a Banner",
         description: "TikTok video content",
-        thumbnail: "/placeholder.svg?height=100&width=150",
+        thumbnail: "/person.png?height=100&width=150",
         scheduledDate: "2024-01-28",
         scheduledTime: "7:00 AM",
         platforms: ["tiktok", "instagram", "facebook"],
-        assignee: { name: "Alex Brown", avatar: "/placeholder.svg?height=32&width=32" },
+        assignee: { name: "Alex Brown", avatar: "/avatar.png?height=32&width=32" },
         comments: 0,
         status: "in-progress",
       },
@@ -149,7 +149,7 @@ export default function ContentManagementApp() {
     }
   }
 
-  const handleCreateContent = (newContent: Omit<ContentItem, "id">) => {
+  const handleCreateContent = (newContent: CreateContentData) => {
     const newItem: ContentItem = {
       ...newContent,
       id: Date.now().toString(),

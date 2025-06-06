@@ -5,7 +5,7 @@ import { Clock, AlertCircle } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import type { ContentItem } from "../types"
+import type { ContentItem } from "@/types"
 import SocialPlatformIcons from "./SocialPlatformIcons"
 
 interface UpcomingDeadlinesProps {

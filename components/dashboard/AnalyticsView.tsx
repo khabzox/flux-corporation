@@ -1,7 +1,7 @@
 "use client"
 
 import { BarChart3 } from "lucide-react"
-import type { Column } from "../types"
+import type { Column } from "@/types"
 
 interface AnalyticsViewProps {
   columns: Column[]

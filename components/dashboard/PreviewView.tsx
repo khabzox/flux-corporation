@@ -1,7 +1,7 @@
 "use client"
 
 import { Eye } from "lucide-react"
-import type { Column } from "../types"
+import type { Column } from "@/types"
 
 interface PreviewViewProps {
   columns: Column[]

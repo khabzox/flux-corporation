@@ -1,7 +1,7 @@
 "use client"
 
 import { Rss } from "lucide-react"
-import type { Column } from "../types"
+import type { Column } from "@/types"
 
 interface FeedViewProps {
   columns: Column[]

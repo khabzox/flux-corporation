@@ -4,7 +4,8 @@ import { Droppable, Draggable } from "@hello-pangea/dnd"
 import { Plus, MoreHorizontal } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ContentCard from "./ContentCard"
-import type { Column } from "../types"
+import type { Column } from "@/types"
+import Icon from "@/lib/IconLibrary"
 
 interface KanbanBoardProps {
   columns: Column[]
@@ -56,8 +57,8 @@ export default function KanbanBoard({ columns }: KanbanBoardProps) {
 
                   {column.items.length === 0 && (
                     <div className="text-center py-8">
-                      <div className="w-16 h-16 bg-gray-200 rounded-lg mx-auto mb-3 flex items-center justify-center">
-                        <span className="text-2xl">📋</span>
+                      <div className="w-16 h-16 rounded-lg mx-auto mb-3 flex items-center justify-center">
+                        <Icon name="file" width={20} height={20} />
                       </div>
                       <p className="text-gray-500 text-sm mb-3">No content currently. Board is empty</p>
                       <Button size="sm" className="bg-blue-600 hover:bg-blue-700">

@@ -22,7 +22,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Skeleton } from "@/components/ui/skeleton"
 import { cn } from "@/lib/utils"
-import type { Column, ContentItem } from "../types"
+import type { Column, ContentItem } from "@/types"
 import CalendarContentCard from "./CalendarContentCard"
 import CalendarDayDetail from "./CalendarDayDetail"
 import MiniCalendar from "./MiniCalendar"
