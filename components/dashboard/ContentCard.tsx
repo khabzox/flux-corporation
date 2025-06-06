@@ -18,7 +18,7 @@ export default function ContentCard({ item }: ContentCardProps) {
             <img
               src={item.thumbnail || "/person.png"}
               alt={item.title}
-              className="w-[262px] h-[105px] rounded-lg"
+              className="w-[262px] h-[105px] rounded-lg object-cover object-top"
             />
           </div>
         </div>
@@ -36,13 +36,13 @@ export default function ContentCard({ item }: ContentCardProps) {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center gap-2">
             <SocialPlatformIcons platforms={item.platforms} />
           </div>
         </div>
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex border-t pt-3 items-center justify-between">
         <div className="flex items-center gap-2">
           <Avatar className="w-6 h-6">
             <AvatarImage src={item.assignee.avatar || "/avatar.png"} />

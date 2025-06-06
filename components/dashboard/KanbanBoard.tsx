@@ -16,11 +16,11 @@ export default function KanbanBoard({ columns }: KanbanBoardProps) {
     <div className="p-6">
       <div className="grid grid-cols-4 gap-6">
         {columns.map((column) => (
-          <div key={column.id} className="bg-gray-50 rounded-lg p-4">
-            <div className="flex items-center justify-between mb-4">
+          <div key={column.id} className="bg-[#e4e7ec] rounded-lg p-4">
+            <div className="flex items-center justify-between mb-4 border-b border-[#d0d5dd] pb-4">
               <div className="flex items-center gap-2">
                 <h3 className="font-medium text-gray-900">{column.title}</h3>
-                <span className="bg-gray-200 text-gray-600 text-xs px-2 py-1 rounded-full">{column.items.length}</span>
+                <span className="bg-[#E5F2FF] text-[#005CE5] text-xs px-2 py-1 rounded-full">{column.items.length}</span>
               </div>
               <div className="flex items-center gap-1">
                 <Button size="sm" variant="ghost" className="w-6 h-6 p-0">

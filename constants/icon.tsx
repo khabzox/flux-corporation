@@ -126,6 +126,14 @@ export const icons: Record<string, IconDefinition> = {
         stroke: "#1A232D",
         strokeWidth: 1.5,
     },
+    filter: {
+        defaultWidth: 18,
+        defaultHeight: 18,
+        viewBox: "0 0 14 10",
+        path: "M1 1H13M3.66667 5L10.3333 5M6.33333 9L7.66667 9",
+        stroke: "#141C25",
+        strokeWidth: 1.5,
+    },
     settings: {
         defaultWidth: 18,
         defaultHeight: 18,

@@ -52,8 +52,8 @@ export default function TopNavigation({
         </div>
       </div>
 
-      <div className="flex items-center justify-between">
-        <div className="flex items-center border-b border-transparent">
+      <div className="flex flex-col items-start">
+        <div className="flex items-center border-b">
           {views.map((view) => (
             <Button
               key={view.id}
@@ -73,8 +73,8 @@ export default function TopNavigation({
           ))}
         </div>
 
-        <div className="flex items-center gap-3">
-          <Button variant="outline" size="sm">
+        <div className="flex items-center gap-3 mt-4">
+          <Button variant="outline" size="sm" className="border h-7">
             <Icon name="filter" className="w-4 h-4 mr-2" />
             Filters
             {selectedFilters.length > 0 && (
