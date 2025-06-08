@@ -1,6 +1,6 @@
-"use client"
 
-import { useState } from "react"
+"use client"
+import { useState, useRef, useEffect } from "react"
 import { Droppable, Draggable } from "@hello-pangea/dnd"
 import { Plus, MoreHorizontal, Edit2, Trash2, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -53,11 +53,10 @@ const ColumnHeader = ({
   }
 
   return (
-    <div className="flex items-center justify-between mb-4 border-b border-[#d0d5dd] pb-4">
-      <div className="flex items-center gap-2">
+    <div className="flex items-center justify-between p-4 bg-white border-b">
+      <div className="flex items-center gap-3">
         {isEditing ? (
           <input
-            type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             onBlur={handleTitleSubmit}
@@ -67,36 +66,37 @@ const ColumnHeader = ({
           />
         ) : (
           <h3 
-            className="font-medium text-gray-900 cursor-pointer hover:text-blue-600 transition-colors"
             onClick={handleTitleClick}
+            className="font-medium text-gray-900 cursor-pointer hover:text-blue-600"
           >
             {column.title}
           </h3>
         )}
-        <span className="bg-[#E5F2FF] text-[#005CE5] text-xs px-2 py-1 rounded-full">
+        
+        <span className="px-2 py-1 text-xs bg-gray-100 rounded-full">
           {column.items.length}
         </span>
       </div>
-      <div className="flex items-center gap-1 relative">
+
+      <div className="flex items-center gap-2 relative">
         <Button
-          size="sm"
           variant="ghost"
-          className="w-6 h-6 p-0"
+          size="sm"
           onClick={() => onAddSection(column.id, 'card')}
         >
           <Plus className="w-4 h-4" />
         </Button>
+        
         <Button
-          size="sm"
           variant="ghost"
-          className="w-6 h-6 p-0"
+          size="sm"
           onClick={() => setShowMenu(!showMenu)}
         >
           <MoreHorizontal className="w-4 h-4" />
         </Button>
         
         {showMenu && (
-          <div className="absolute top-8 right-0 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-10 min-w-[160px]">
+          <div className="absolute right-0 top-8 bg-white border rounded-lg shadow-lg z-10 min-w-48">
             <button
               onClick={() => {
                 onAddSection(column.id, 'left')
@@ -107,6 +107,7 @@ const ColumnHeader = ({
               <ChevronLeft className="w-4 h-4" />
               Add section left
             </button>
+            
             <button
               onClick={() => {
                 onAddSection(column.id, 'right')
@@ -117,6 +118,7 @@ const ColumnHeader = ({
               <ChevronRight className="w-4 h-4" />
               Add section right
             </button>
+            
             <button
               onClick={() => {
                 setIsEditing(true)
@@ -127,6 +129,7 @@ const ColumnHeader = ({
               <Edit2 className="w-4 h-4" />
               Rename
             </button>
+            
             {totalColumns > 1 && (
               <button
                 onClick={() => {
@@ -147,6 +150,11 @@ const ColumnHeader = ({
 }
 
 export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent }: KanbanBoardProps) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const [startX, setStartX] = useState(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
+
   const handleRenameColumn = (columnId: string, newTitle: string) => {
     const updatedColumns = columns.map(col => 
       col.id === columnId ? { ...col, title: newTitle } : col
@@ -169,7 +177,6 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
         comments: 0,
         status: columnId as any,
       }
-
       const updatedColumns = columns.map(col => 
         col.id === columnId 
           ? { ...col, items: [...col.items, newCard] }
@@ -184,7 +191,6 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
         title: "New Section",
         items: [],
       }
-
       const newColumns = [...columns]
       if (type === 'left') {
         newColumns.splice(columnIndex, 0, newColumn)
@@ -203,11 +209,79 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
     }
   }
 
+  // Mouse drag to scroll functionality
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return
+    setIsDragging(true)
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft)
+    setScrollLeft(scrollContainerRef.current.scrollLeft)
+    scrollContainerRef.current.style.cursor = 'grabbing'
+  }
+
+  const handleMouseLeave = () => {
+    setIsDragging(false)
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.style.cursor = 'grab'
+    }
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.style.cursor = 'grab'
+    }
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return
+    e.preventDefault()
+    const x = e.pageX - scrollContainerRef.current.offsetLeft
+    const walk = (x - startX) * 2 // Scroll speed multiplier
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk
+  }
+
+  // Wheel scroll functionality - only for horizontal scrolling when shift is held
+  const handleWheel = (e: React.WheelEvent) => {
+    if (!scrollContainerRef.current) return
+    // Only handle horizontal scrolling when Shift key is pressed
+    if (e.shiftKey) {
+      e.preventDefault()
+      scrollContainerRef.current.scrollLeft += e.deltaY
+    }
+    // Otherwise, let normal vertical scrolling happen
+  }
+
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (container) {
+      container.style.cursor = 'grab'
+    }
+  }, [])
+
   return (
-    <div className="p-6 max-w-[100vh]">
-      <div className="grid gap-6" style={{ gridTemplateColumns: `repeat(${columns.length}, minmax(300px, 1fr))` }}>
+    <div className="p-6 w-full h-full max-w-[85vw]">
+      <div 
+        ref={scrollContainerRef}
+        className="flex gap-4 w-full h-full overflow-x-auto scrollbar-hide select-none"
+        style={{
+          scrollbarWidth: 'none', /* Firefox */
+          msOverflowStyle: 'none', /* IE and Edge */
+        }}
+        onMouseDown={handleMouseDown}
+        onMouseLeave={handleMouseLeave}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        onWheel={handleWheel}
+      >
+        {/* Add custom CSS to hide webkit scrollbar */}
+        <style jsx>{`
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
+        
         {columns.map((column, columnIndex) => (
-          <div key={column.id} className="bg-[#E4E7EC]/50 rounded-lg p-4">
+          <div key={column.id} className="min-w-80 bg-gray-50 rounded-lg flex flex-col">
             <ColumnHeader
               column={column}
               onRename={handleRenameColumn}
@@ -216,15 +290,13 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
               columnIndex={columnIndex}
               totalColumns={columns.length}
             />
-
+            
             <Droppable droppableId={column.id}>
               {(provided, snapshot) => (
                 <div
-                  ref={provided.innerRef}
                   {...provided.droppableProps}
-                  className={`space-y-3 min-h-[200px] ${
-                    snapshot.isDraggingOver ? "bg-blue-50 rounded-lg p-2" : ""
-                  }`}
+                  ref={provided.innerRef}
+                  className="flex-1 p-4 space-y-3"
                 >
                   {column.items.map((item, index) => (
                     <Draggable key={item.id} draggableId={item.id} index={index}>
@@ -233,24 +305,24 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className={`${snapshot.isDragging ? "rotate-2 shadow-lg" : ""}`}
                         >
-                          <ContentCard item={item} onEdit={onUpdateContent} />
+                          <ContentCard item={item} onUpdate={onUpdateContent} />
                         </div>
                       )}
                     </Draggable>
                   ))}
                   {provided.placeholder}
-
                   {column.items.length === 0 && (
-                    <div className="text-center py-8">
-                      <div className="w-16 h-16 rounded-lg mx-auto mb-3 flex items-center justify-center">
-                        <Icon name="file" width={20} height={20} />
+                    <div className="flex flex-col items-center justify-center py-8 text-gray-500">
+                      <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mb-3">
+                        <Plus className="w-6 h-6" />
                       </div>
-                      <p className="text-gray-500 text-sm mb-3">No content currently. Board is empty</p>
-                      <Button 
-                        size="sm" 
-                        className="bg-blue-600 hover:bg-blue-700"
+                      
+                      <p className="text-sm mb-3">No content currently. Board is empty</p>
+                      
+                      <Button
+                        variant="outline"
+                        size="sm"
                         onClick={() => handleAddSection(column.id, 'card')}
                       >
                         Add Content
