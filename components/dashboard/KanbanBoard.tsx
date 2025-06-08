@@ -315,7 +315,7 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
         `}</style>
 
         {columns.map((column, columnIndex) => (
-          <div key={column.id} className="min-w-80 max-w-[320px] bg-gray-50 rounded-lg flex flex-col">
+          <div key={column.id} className="min-w-80 max-w-[314px] bg-gray-50 rounded-lg flex flex-col">
             <ColumnHeader
               column={column}
               onRename={handleRenameColumn}
