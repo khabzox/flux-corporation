@@ -15,13 +15,13 @@ interface KanbanBoardProps {
 }
 
 // Column Header Component
-const ColumnHeader = ({ 
-  column, 
-  onRename, 
-  onAddSection, 
-  onRemoveSection, 
-  columnIndex, 
-  totalColumns 
+const ColumnHeader = ({
+  column,
+  onRename,
+  onAddSection,
+  onRemoveSection,
+  columnIndex,
+  totalColumns
 }: {
   column: Column
   onRename: (columnId: string, newTitle: string) => void
@@ -33,6 +33,7 @@ const ColumnHeader = ({
   const [isEditing, setIsEditing] = useState(false)
   const [title, setTitle] = useState(column.title)
   const [showMenu, setShowMenu] = useState(false)
+  const [showAddSubmenu, setShowAddSubmenu] = useState(false)
 
   const handleTitleClick = () => {
     setIsEditing(true)
@@ -65,14 +66,14 @@ const ColumnHeader = ({
             autoFocus
           />
         ) : (
-          <h3 
+          <h3
             onClick={handleTitleClick}
             className="font-medium text-gray-900 cursor-pointer hover:text-blue-600"
           >
             {column.title}
           </h3>
         )}
-        
+
         <span className="px-2 py-1 text-xs bg-gray-100 rounded-full">
           {column.items.length}
         </span>
@@ -86,7 +87,7 @@ const ColumnHeader = ({
         >
           <Plus className="w-4 h-4" />
         </Button>
-        
+
         <Button
           variant="ghost"
           size="sm"
@@ -94,31 +95,9 @@ const ColumnHeader = ({
         >
           <MoreHorizontal className="w-4 h-4" />
         </Button>
-        
+
         {showMenu && (
           <div className="absolute right-0 top-8 bg-white border rounded-lg shadow-lg z-10 min-w-48">
-            <button
-              onClick={() => {
-                onAddSection(column.id, 'left')
-                setShowMenu(false)
-              }}
-              className="w-full px-3 py-2 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
-            >
-              <ChevronLeft className="w-4 h-4" />
-              Add section left
-            </button>
-            
-            <button
-              onClick={() => {
-                onAddSection(column.id, 'right')
-                setShowMenu(false)
-              }}
-              className="w-full px-3 py-2 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
-            >
-              <ChevronRight className="w-4 h-4" />
-              Add section right
-            </button>
-            
             <button
               onClick={() => {
                 setIsEditing(true)
@@ -129,7 +108,53 @@ const ColumnHeader = ({
               <Edit2 className="w-4 h-4" />
               Rename
             </button>
-            
+
+            <div className="relative">
+              <button
+                onMouseEnter={() => setShowAddSubmenu(true)}
+                onMouseLeave={() => setShowAddSubmenu(false)}
+                className="w-full px-3 py-2 text-left text-sm hover:bg-gray-50 flex items-center justify-between"
+              >
+                <div className="flex items-center gap-2">
+                  <Plus className="w-4 h-4" />
+                  Add section
+                </div>
+                <ChevronRight className="w-4 h-4" />
+              </button>
+
+              {showAddSubmenu && (
+                <div
+                  className="absolute left-full top-0 bg-white border rounded-lg shadow-lg z-20 min-w-44"
+                  onMouseEnter={() => setShowAddSubmenu(true)}
+                  onMouseLeave={() => setShowAddSubmenu(false)}
+                >
+                  <button
+                    onClick={() => {
+                      onAddSection(column.id, 'left')
+                      setShowMenu(false)
+                      setShowAddSubmenu(false)
+                    }}
+                    className="w-full px-3 py-2 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    Add section left
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      onAddSection(column.id, 'right')
+                      setShowMenu(false)
+                      setShowAddSubmenu(false)
+                    }}
+                    className="w-full px-3 py-2 text-left text-sm hover:bg-gray-50 flex items-center gap-2"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                    Add section right
+                  </button>
+                </div>
+              )}
+            </div>
+
             {totalColumns > 1 && (
               <button
                 onClick={() => {
@@ -156,7 +181,7 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
   const [scrollLeft, setScrollLeft] = useState(0)
 
   const handleRenameColumn = (columnId: string, newTitle: string) => {
-    const updatedColumns = columns.map(col => 
+    const updatedColumns = columns.map(col =>
       col.id === columnId ? { ...col, title: newTitle } : col
     )
     onUpdateColumns(updatedColumns)
@@ -177,8 +202,8 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
         comments: 0,
         status: columnId as any,
       }
-      const updatedColumns = columns.map(col => 
-        col.id === columnId 
+      const updatedColumns = columns.map(col =>
+        col.id === columnId
           ? { ...col, items: [...col.items, newCard] }
           : col
       )
@@ -197,7 +222,7 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
       } else {
         newColumns.splice(columnIndex + 1, 0, newColumn)
       }
-      
+
       onUpdateColumns(newColumns)
     }
   }
@@ -260,7 +285,7 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
 
   return (
     <div className="p-6 w-full h-full max-w-[85vw]">
-      <div 
+      <div
         ref={scrollContainerRef}
         className="flex gap-4 w-full h-full overflow-x-auto scrollbar-hide select-none"
         style={{
@@ -279,7 +304,7 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
             display: none;
           }
         `}</style>
-        
+
         {columns.map((column, columnIndex) => (
           <div key={column.id} className="min-w-80 bg-gray-50 rounded-lg flex flex-col">
             <ColumnHeader
@@ -290,7 +315,7 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
               columnIndex={columnIndex}
               totalColumns={columns.length}
             />
-            
+
             <Droppable droppableId={column.id}>
               {(provided, snapshot) => (
                 <div
@@ -317,9 +342,9 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
                       <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mb-3">
                         <Plus className="w-6 h-6" />
                       </div>
-                      
+
                       <p className="text-sm mb-3">No content currently. Board is empty</p>
-                      
+
                       <Button
                         variant="outline"
                         size="sm"
