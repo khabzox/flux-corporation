@@ -133,7 +133,7 @@ const ColumnHeader = ({
 
               {showAddSubmenu && (
                 <div
-                  className="absolute left-full top-0 bg-white border rounded-lg shadow-lg z-20 min-w-44"
+                  className={`absolute ${columnIndex === totalColumns - 1 ? 'right-full' : 'left-full'} top-0 bg-white border rounded-lg shadow-lg z-20 min-w-44`}
                   onMouseEnter={() => setShowAddSubmenu(true)}
                   onMouseLeave={() => setShowAddSubmenu(false)}
                 >
