@@ -5,7 +5,7 @@ import { DragDropContext, type DropResult } from "@hello-pangea/dnd"
 import Sidebar from "@/components/dashboard/Sidebar"
 import TopNavigation from "@/components/dashboard/TopNavigation"
 import KanbanBoard from "@/components/dashboard/KanbanBoard"
-import CalendarView from "@/components/dashboard/CalendarView"
+import CalendarView from "@/components/dashboard/SimpleCalendar"
 import TableView from "@/components/dashboard/TableView"
 import PreviewView from "@/components/dashboard/PreviewView"
 import FeedView from "@/components/dashboard/FeedView"
@@ -181,7 +181,7 @@ export default function ContentManagementApp() {
   const renderCurrentView = () => {
     switch (currentView) {
       case "Calendar":
-        return <CalendarView columns={columns} onAddContent={handleAddContent} onUpdateContent={handleUpdateContent} />
+        return <CalendarView />
       case "Board":
         return (
           <DragDropContext onDragEnd={handleDragEnd}>
