@@ -5,6 +5,7 @@ import { Calendar, Clock, MoreHorizontal, MessageCircle } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import type { ContentItem, Platform } from "@/types"
 import SocialPlatformIcons from "./SocialPlatformIcons"
+import Image from "next/image"
 
 interface ContentCardProps {
   item: ContentItem
@@ -42,10 +43,12 @@ export default function ContentCard({ item, onEdit }: ContentCardProps) {
       <div className="flex items-start justify-between">
         <div className="flex items-center justify-start mb-3">
           <div className="relative">
-            <img
+            <Image
               src={item.thumbnail || "/person.png"}
               alt={item.title}
-              className="w-[262px] h-[105px] rounded-lg object-cover object-top"
+              className="rounded-lg object-cover object-top"
+              width={262}
+              height={109}
             />
           </div>
         </div>
@@ -69,13 +72,13 @@ export default function ContentCard({ item, onEdit }: ContentCardProps) {
             </h4>
           )}
 
-          <div className="space-y-2">
-            <div className="flex items-center gap-2 text-xs text-gray-500">
-              <Calendar className="w-3 h-3" />
+          <div className="space-y-0">
+            <div className="flex items-center gap-2 text-lg text-gray-500">
+              <Calendar className="w-4 h-4" />
               <span>{item.scheduledDate}</span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-gray-500">
-              <Clock className="w-3 h-3" />
+            <div className="flex items-center gap-2 text-lg text-gray-500">
+              <Clock className="w-4 h-4" />
               <span>{item.scheduledTime}</span>
             </div>
           </div>

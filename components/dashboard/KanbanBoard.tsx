@@ -1,5 +1,5 @@
-
 "use client"
+
 import { useState, useRef, useEffect } from "react"
 import { Droppable, Draggable } from "@hello-pangea/dnd"
 import { Plus, MoreHorizontal, Edit2, Trash2, ChevronLeft, ChevronRight } from "lucide-react"
@@ -13,6 +13,15 @@ interface KanbanBoardProps {
   onUpdateColumns: (columns: Column[]) => void
   onUpdateContent: (updatedItem: ContentItem) => void
 }
+
+interface ContentCardProps {
+  item: ContentItem;
+  onUpdate: (updatedItem: ContentItem) => void;
+}
+
+const WrappedContentCard = ({ item, onUpdate }: ContentCardProps) => {
+  return <ContentCard item={item} />;
+};
 
 // Column Header Component
 const ColumnHeader = ({
@@ -331,7 +340,7 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
                         >
-                          <ContentCard item={item} onUpdate={onUpdateContent} />
+                          <WrappedContentCard item={item} onUpdate={onUpdateContent} />
                         </div>
                       )}
                     </Draggable>

@@ -21,7 +21,7 @@ export default function SocialPlatformIcons({ platforms }: SocialPlatformIconsPr
       {platforms.map((platform) => (
         <div
           key={platform}
-          className="w-5 h-5 rounded text-white text-xs flex items-center justify-center"
+          className="w-5 h-5 rounded text-white text-sm flex items-center justify-center"
           title={platform.charAt(0).toUpperCase() + platform.slice(1)}
         >
           <span className="text-[10px]">{platformIcons[platform]}</span>
