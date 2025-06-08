@@ -83,7 +83,7 @@ const ColumnHeader = ({
           </h3>
         )}
 
-        <span className="px-2 py-1 text-xs bg-gray-100 rounded-full">
+        <span className="px-2 py-1 text-xs bg-[#E5F2FF] text-[#005CE5] rounded-full">
           {column.items.length}
         </span>
       </div>

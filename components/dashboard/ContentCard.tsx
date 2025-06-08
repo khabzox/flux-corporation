@@ -39,7 +39,7 @@ export default function ContentCard({ item, onEdit }: ContentCardProps) {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow cursor-pointer">
+    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-2 hover:shadow-md transition-shadow cursor-pointer">
       <div className="flex items-start justify-between">
         <div className="flex items-center justify-start mb-3">
           <div className="relative">
@@ -89,7 +89,7 @@ export default function ContentCard({ item, onEdit }: ContentCardProps) {
         </div>
       </div>
 
-      <div className="flex border-t pt-3 items-center justify-between">
+      <div className="flex border-t pt-2 items-center justify-between">
         <div className="flex items-center gap-2">
           <Avatar className="w-6 h-6">
             <AvatarImage src={item.assignee.avatar || "/avatar.png"} />
