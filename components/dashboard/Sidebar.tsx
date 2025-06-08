@@ -130,19 +130,19 @@ export default function Sidebar({ searchQuery, onSearchChange }: SidebarProps) {
           {isSocialSpacesOpen && ( // Step 4: Conditional rendering
             <div className="space-y-0.5">
               <Button variant="ghost" className="w-full justify-start">
-                <div className="w-4 h-4 mr-3 bg-[#E5F2FF] rounded-full text-[#005CE5] text-sm flex items-center justify-center">
+                <div className="w-4 h-4 mr-3 bg-[#E5F2FF] rounded-full text-[#003166] text-sm flex items-center justify-center">
                   B
                 </div>
                 Beyond UI
               </Button>
               <Button variant="ghost" className="w-full justify-start">
-                <div className="w-4 h-4 mr-3 bg-[#E5F2FF] rounded text-[#005CE5] text-xs flex items-center justify-center">
+                <div className="w-4 h-4 mr-3 bg-[#E5F2FF] rounded text-[#065986] text-xs flex items-center justify-center">
                   M
                 </div>
                 Marketing
               </Button>
               <Button variant="ghost" className="w-full justify-start">
-                <div className="w-4 h-4 mr-3 bg-[#E5F2FF] rounded text-[#005CE5] text-xs flex items-center justify-center">
+                <div className="w-4 h-4 mr-3 bg-[#E5F2FF] rounded text-[#065F46] text-xs flex items-center justify-center">
                   H
                 </div>
                 HR
@@ -154,7 +154,7 @@ export default function Sidebar({ searchQuery, onSearchChange }: SidebarProps) {
 
       {/* Bottom Section */}
       <div className="p-4 border-gray-200">
-        <div className="flex items-center gap-2 text-sm text-orange-600 mb-4 border rounded-lg p-2">
+        <div className="flex items-center gap-2 text-sm text-orange-600 mb-4 border rounded-lg p-3">
           <Icon name="warningInfo" className="w-4 h-4 text-white" strokeWidth={0.5} />
           <span className="text-[#344051]">7 days left in trial</span>
           <Button size="sm" variant="link" className="p-0 h-auto text-[#005CE5]">
@@ -162,8 +162,8 @@ export default function Sidebar({ searchQuery, onSearchChange }: SidebarProps) {
           </Button>
         </div>
 
-        <Button variant="ghost" className="w-full justify-start mb-4">
-          <Icon name="support" className="w-4 h-4 mr-3" />
+        <Button variant="ghost" className="w-full justify-start mb-4 pl-2">
+          <Icon name="support" className="w-4 h-4" />
           Support
         </Button>
 
