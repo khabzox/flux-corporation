@@ -16,7 +16,7 @@ export default function KanbanBoard({ columns }: KanbanBoardProps) {
     <div className="p-6">
       <div className="grid grid-cols-4 gap-6">
         {columns.map((column) => (
-          <div key={column.id} className="bg-[#e4e7ec] rounded-lg p-4">
+          <div key={column.id} className="bg-[#E4E7EC]/50 rounded-lg p-4">
             <div className="flex items-center justify-between mb-4 border-b border-[#d0d5dd] pb-4">
               <div className="flex items-center gap-2">
                 <h3 className="font-medium text-gray-900">{column.title}</h3>
