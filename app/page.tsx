@@ -178,6 +178,10 @@ export default function ContentManagementApp() {
     )
   }
 
+  const handleUpdateColumns = (updatedColumns: Column[]) => {
+    setColumns(updatedColumns)
+  }
+
   const renderCurrentView = () => {
     switch (currentView) {
       case "Calendar":
@@ -185,7 +189,11 @@ export default function ContentManagementApp() {
       case "Board":
         return (
           <DragDropContext onDragEnd={handleDragEnd}>
-            <KanbanBoard columns={columns} />
+            <KanbanBoard 
+              columns={columns} 
+              onUpdateColumns={handleUpdateColumns}
+              onUpdateContent={handleUpdateContent}
+            />
           </DragDropContext>
         )
       case "Table":
@@ -199,7 +207,11 @@ export default function ContentManagementApp() {
       default:
         return (
           <DragDropContext onDragEnd={handleDragEnd}>
-            <KanbanBoard columns={columns} />
+            <KanbanBoard 
+              columns={columns} 
+              onUpdateColumns={handleUpdateColumns}
+              onUpdateContent={handleUpdateContent}
+            />
           </DragDropContext>
         )
     }
