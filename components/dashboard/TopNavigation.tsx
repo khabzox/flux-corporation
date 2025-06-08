@@ -46,7 +46,7 @@ export default function TopNavigation({
           <Button variant="outline" size="sm">
             Share
           </Button>
-          <Button  onClick={onAddContent} className="bg-blue-600 hover:bg-blue-600/90">
+          <Button  onClick={onAddContent} className="h-[36px] w-[117px] bg-blue-600 hover:bg-blue-600/90">
             Add Content
           </Button>
         </div>
@@ -61,9 +61,9 @@ export default function TopNavigation({
               size="sm"
               onClick={() => onViewChange(view.id)}
               className={cn(
-                "px-4 py-2 text-sm font-medium rounded-none transition-all border-b-2",
+                "px-4 py-2 text-base font-medium rounded-none transition-all border-b-2",
                 currentView === view.id
-                  ? "text-blue-600 border-blue-600"
+                  ? "text-[#141C25] border-[#141C25]"
                   : "text-gray-600 hover:text-gray-900 border-transparent",
               )}
             >

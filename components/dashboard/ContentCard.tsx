@@ -40,8 +40,8 @@ export default function ContentCard({ item, onEdit }: ContentCardProps) {
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-2 hover:shadow-md transition-shadow cursor-pointer">
-      <div className="flex items-start justify-between">
-        <div className="flex items-center justify-start mb-3">
+      <div className="flex items-center justify-start">
+        <div className="flex items-center justify-start mb-2">
           <div className="relative">
             <Image
               src={item.thumbnail || "/person.png"}
@@ -52,6 +52,7 @@ export default function ContentCard({ item, onEdit }: ContentCardProps) {
             />
           </div>
         </div>
+
         <div className="flex flex-col gap-2 w-full ml-4">
           {isEditing ? (
             <input
@@ -60,31 +61,31 @@ export default function ContentCard({ item, onEdit }: ContentCardProps) {
               onChange={(e) => setTitle(e.target.value)}
               onBlur={handleTitleSubmit}
               onKeyDown={handleKeyPress}
-              className="font-semibold text-gray-900 bg-transparent border-b border-blue-500 outline-none"
+              className="font-medium text-gray-900 bg-transparent border-b border-blue-500 outline-none"
               autoFocus
             />
           ) : (
             <h4
-              className={`font-semibold text-gray-900 ${onEdit ? 'cursor-pointer hover:text-blue-600 transition-colors' : ''}`}
+              className={`font-medium text-gray-900 ${onEdit ? 'cursor-pointer hover:text-blue-600 transition-colors' : ''}`}
               onClick={handleTitleClick}
             >
               {item.title}
             </h4>
           )}
 
-          <div className="space-y-0">
+          <div className="flex flex-col items-start">
             <div className="flex items-center gap-2 text-lg text-gray-500">
-              <Calendar className="w-4 h-4" />
+              <Calendar className="w-5 h-5" />
               <span>{item.scheduledDate}</span>
             </div>
             <div className="flex items-center gap-2 text-lg text-gray-500">
-              <Clock className="w-4 h-4" />
+              <Clock className="w-5 h-5" />
               <span>{item.scheduledTime}</span>
             </div>
-          </div>
 
-          <div className="flex items-center gap-2">
-            <SocialPlatformIcons platforms={item.platforms} />
+            <div className="flex items-center gap-2">
+              <SocialPlatformIcons platforms={item.platforms} />
+            </div>
           </div>
         </div>
       </div>
