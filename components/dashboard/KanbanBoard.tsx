@@ -88,7 +88,7 @@ const ColumnHeader = ({
         </span>
       </div>
 
-      <div className="flex items-center gap-2 relative">
+      <div className="flex items-center relative">
         <Button
           variant="ghost"
           size="sm"
