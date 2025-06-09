@@ -9,4 +9,5 @@ export interface KanbanBoardProps {
 export interface ContentCardProps {
     item: ContentItem;
     onUpdate: (updatedItem: ContentItem) => void;
+    onEdit?: (updatedItem: ContentItem) => void
 }

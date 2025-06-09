@@ -1,37 +1,16 @@
-// Represents a single content item with details like title, description, and scheduling information.
-export interface ContentItem {
-  id: string
-  title: string
-  description: string
-  thumbnail: string
-  scheduledDate: string
-  scheduledTime: string
-  platforms: Platform[]
-  assignee: {
-    name: string
-    avatar: string
-  }
-  comments: number
-  status: "idea" | "in-progress" | "review-ready" | "approved"
-}
+// this file exports all types from the src folder as a single export
 
-// Represents a column in a Kanban-like board, containing multiple content items.
-export interface Column {
-  id: string
-  title: string
-  items: ContentItem[]
-}
+import type { ContentItem, Column, Platform, CreateContentData } from "./src/content-modal"
+import type { AnalyticsViewProps } from "./src/analytics-view"
+import type { KanbanBoardProps, ContentCardProps } from "./src/board"
+import type { CalendarViewProps, CalendarContentStatisticsProps, CalendarDayDetailProps, MiniCalendarProps, CalendarContentCardProps } from "./src/calendar"
+import type { FeedViewProps } from "./src/feed-view"
+import type { PreviewViewProps } from "./src/preview-view"
+import type { SidebarProps } from "./src/sidebar"
+import type { TopNavigationProps } from "./src/nav"
+import type { IconDefinition, IconProps } from "./src/icon"
+import type { SocialPlatformIconsProps } from "./src/social-platform-icons"
+import type { TableViewProps } from "./src/table-view"
+import type { UpcomingDeadlinesProps } from "./src/upcoming-deadlines"
 
-// Defines the supported social media platforms for content publishing.
-export type Platform = "tiktok" | "instagram" | "facebook" | "twitter" | "linkedin"
-
-// Data required to create a new content item, excluding fields like 'id' and 'comments'.
-export interface CreateContentData {
-  title: string
-  description: string
-  thumbnail: string
-  scheduledDate: string
-  scheduledTime: string
-  platforms: Platform[]
-  status: "idea" | "in-progress" | "review-ready" | "approved"
-}
+export type { ContentItem, Column, Platform, CreateContentData, AnalyticsViewProps, KanbanBoardProps, CalendarViewProps, FeedViewProps, PreviewViewProps, SidebarProps, TopNavigationProps, IconDefinition, IconProps, SocialPlatformIconsProps, TableViewProps, UpcomingDeadlinesProps, ContentCardProps, CalendarContentStatisticsProps, CalendarDayDetailProps, MiniCalendarProps, CalendarContentCardProps }

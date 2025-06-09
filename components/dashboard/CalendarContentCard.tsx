@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import SocialPlatformIcons from "./SocialPlatformIcons"
-import type { CalendarContentCardProps } from "@/types/calendar"
+import type { CalendarContentCardProps } from "@/types"
 
 
 // Status color mapping

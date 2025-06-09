@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import SocialPlatformIcons from "./SocialPlatformIcons"
-import type { UpcomingDeadlinesProps } from "@/types/upcoming-deadlines"
+import type { UpcomingDeadlinesProps } from "@/types"
 
 
 export default function UpcomingDeadlines({ items }: UpcomingDeadlinesProps) {

@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import type { SocialPlatformIconsProps } from "@/types/social-platform-icons"
+import type { SocialPlatformIconsProps } from "@/types"
 
 const platformIcons = {
   tiktok: <Image src="/social-media/tiktok.png" alt="TikTok" width={20} height={20} />,

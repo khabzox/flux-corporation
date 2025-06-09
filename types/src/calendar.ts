@@ -17,10 +17,6 @@ export interface CalendarViewProps {
     onUpdateContent: (item: ContentItem) => void
 }
 
-export interface ContentCardProps {
-    item: ContentItem
-    onEdit?: (updatedItem: ContentItem) => void
-}
 
 
 export interface MiniCalendarProps {

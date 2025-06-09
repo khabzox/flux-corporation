@@ -1,7 +1,7 @@
 "use client"
 
 import { Rss } from "lucide-react"
-import type { FeedViewProps } from "@/types/feed-view"
+import type { FeedViewProps } from "@/types"
 
 export default function FeedView({ columns }: FeedViewProps) {
   const allItems = columns.flatMap((col) => col.items)

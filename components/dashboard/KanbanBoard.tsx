@@ -2,16 +2,15 @@
 
 import { useState, useRef, useEffect } from "react"
 import { Droppable, Draggable } from "@hello-pangea/dnd"
-import { Plus, MoreHorizontal, Edit2, Trash2, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ContentCard from "./ContentCard"
 import type { Column, ContentItem } from "@/types"
 import Image from "next/image"
-import type { KanbanBoardProps, ContentCardProps } from "@/types/board"
+import type { KanbanBoardProps, ContentCardProps } from "@/types"
 import { ColumnHeader } from "./ColumnHeader"
 
 const WrappedContentCard = ({ item, onUpdate }: ContentCardProps) => {
-  return <ContentCard item={item} />;
+  return <ContentCard item={item} onUpdate={onUpdate} />;
 };
 
 export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent }: KanbanBoardProps) {

@@ -1,4 +1,4 @@
-import { IconDefinition } from "@/types/icon";
+import { IconDefinition } from "@/types/src/icon";
 
 export const icons: Record<string, IconDefinition> = {
     chevronDown: {

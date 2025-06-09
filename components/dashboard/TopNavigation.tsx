@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Icon from "@/lib/IconLibrary"
 import { cn } from "@/lib/utils"
-import type { TopNavigationProps } from "@/types/nav"
+import type { TopNavigationProps } from "@/types"
 import { views } from "@/data/nav"
 
 export default function TopNavigation({

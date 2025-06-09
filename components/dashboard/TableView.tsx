@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import SocialPlatformIcons from "./SocialPlatformIcons"
-import type { TableViewProps } from "@/types/table-view"
+import type { TableViewProps } from "@/types"
 
 export default function TableView({ columns }: TableViewProps) {
   const allItems = columns.flatMap((col) => col.items)

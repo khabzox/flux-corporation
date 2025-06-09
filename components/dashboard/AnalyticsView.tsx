@@ -1,7 +1,7 @@
 "use client"
 
 import { BarChart3 } from "lucide-react"
-import type { AnalyticsViewProps } from "@/types/analytics-view"
+import type { AnalyticsViewProps } from "@/types"
 
 export default function AnalyticsView({ columns }: AnalyticsViewProps) {
   const allItems = columns.flatMap((col) => col.items)

@@ -1,7 +1,7 @@
 
 import React from "react";
 import { icons } from "@/constants/icon";
-import { IconProps } from "@/types/icon";
+import { IconProps } from "@/types/src/icon";
 
 const Icon: React.FC<IconProps> = ({
   name,
