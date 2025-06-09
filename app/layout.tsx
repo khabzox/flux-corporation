@@ -3,8 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'App',
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  description: 'Make with ❤️ from khabzox',
 }
 
 export default function RootLayout({
