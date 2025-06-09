@@ -4,13 +4,9 @@ import { Clock } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import type { ContentItem } from "@/types"
 import SocialPlatformIcons from "./SocialPlatformIcons"
+import type { CalendarContentCardProps } from "@/types/calendar"
 
-interface CalendarContentCardProps {
-  item: ContentItem
-  isCompact?: boolean
-}
 
 // Status color mapping
 const statusColors = {

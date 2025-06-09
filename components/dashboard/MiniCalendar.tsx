@@ -15,13 +15,7 @@ import {
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-
-interface MiniCalendarProps {
-  currentDate: Date
-  selectedDate: Date | null
-  onDateChange: (date: Date) => void
-  onDateSelect: (date: Date) => void
-}
+import type { MiniCalendarProps } from "@/types/calendar"
 
 export default function MiniCalendar({ currentDate, selectedDate, onDateChange, onDateSelect }: MiniCalendarProps) {
   const [viewDate, setViewDate] = useState(currentDate)

@@ -5,11 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Image from "next/image"
 import { useState } from "react"
-
-interface SidebarProps {
-  searchQuery: string
-  onSearchChange: (query: string) => void
-}
+import type { SidebarProps } from "@/types/sidebar"
 
 export default function Sidebar({ searchQuery, onSearchChange }: SidebarProps) {
   const [isSocialSpacesOpen, setSocialSpacesOpen] = useState(true);

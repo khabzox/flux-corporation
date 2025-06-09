@@ -1,3 +1,5 @@
+// !info: this a temporary component to preview the calendar view
+
 import { useState, useMemo } from "react"
 import { ChevronLeft, ChevronRight, Plus } from "lucide-react"
 

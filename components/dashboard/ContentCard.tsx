@@ -1,16 +1,12 @@
 "use client"
 
 import { useState } from "react"
-import { Calendar, Clock, MoreHorizontal, MessageCircle } from "lucide-react"
+import { Calendar, Clock, MessageCircle } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import type { ContentItem, Platform } from "@/types"
 import SocialPlatformIcons from "./SocialPlatformIcons"
 import Image from "next/image"
+import type { ContentCardProps } from "@/types/calendar"
 
-interface ContentCardProps {
-  item: ContentItem
-  onEdit?: (updatedItem: ContentItem) => void
-}
 
 export default function ContentCard({ item, onEdit }: ContentCardProps) {
   const [isEditing, setIsEditing] = useState(false)

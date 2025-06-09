@@ -1,11 +1,7 @@
 "use client"
 
 import { Eye } from "lucide-react"
-import type { Column } from "@/types"
-
-interface PreviewViewProps {
-  columns: Column[]
-}
+import type { PreviewViewProps } from "@/types/preview-view"
 
 export default function PreviewView({ columns }: PreviewViewProps) {
   const allItems = columns.flatMap((col) => col.items)

@@ -7,12 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import type { ContentItem } from "@/types"
 import CalendarContentCard from "./CalendarContentCard"
-
-interface CalendarDayDetailProps {
-  date: Date
-  items: ContentItem[]
-  onAddContent: () => void
-}
+import type { CalendarDayDetailProps } from "@/types/calendar"
 
 export default function CalendarDayDetail({ date, items, onAddContent }: CalendarDayDetailProps) {
   // Group items by time

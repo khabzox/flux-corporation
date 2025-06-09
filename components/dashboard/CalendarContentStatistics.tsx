@@ -6,12 +6,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
-import type { ContentItem } from "@/types"
-
-interface CalendarContentStatisticsProps {
-  items: ContentItem[]
-  currentMonth: Date
-}
+import type { CalendarContentStatisticsProps } from "@/types/calendar"
 
 export default function CalendarContentStatistics({ items, currentMonth }: CalendarContentStatisticsProps) {
   // Filter items for the current month

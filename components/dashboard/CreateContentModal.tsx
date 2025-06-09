@@ -1,16 +1,15 @@
 "use client"
 
 import React, { useState, useEffect } from "react"
-import { X, Upload, Plus, ChevronLeft, ChevronRight, MoreHorizontal, Paperclip, Smile, Send } from 'lucide-react'
+import { X, Plus, ChevronLeft, ChevronRight, MoreHorizontal, Paperclip, Smile, Send } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Icon from "@/lib/IconLibrary"
 
-// Types
+
 interface CreateContentData {
   title: string
   assignee: string
