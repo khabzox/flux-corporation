@@ -111,7 +111,7 @@ export default function Sidebar({ searchQuery, onSearchChange }: SidebarProps) {
           <Button variant="ghost" className="w-full justify-start">
             <div className="w-4 h-4" ><Icon name="bell" /></div>
             Inbox
-            <span className="ml-auto bg-[#E5F2FF] text-[#005CE5] text-xs px-[4.5px] py-0 rounded-full">3</span>
+            <span className="ml-auto bg-[#E5F2FF] text-primary text-xs px-[4.5px] py-0 rounded-full">3</span>
           </Button>
         </nav>
 
@@ -154,8 +154,8 @@ export default function Sidebar({ searchQuery, onSearchChange }: SidebarProps) {
       <div className="p-4 border-gray-200">
         <div className="flex items-center gap-2 text-sm text-orange-600 mb-4 border rounded-lg p-3">
           <Icon name="warningInfo" className="w-4 h-4 text-white" strokeWidth={0.5} />
-          <span className="text-[#344051]">7 days left in trial</span>
-          <Button size="sm" variant="link" className="p-0 h-auto text-[#005CE5]">
+          <span className="text-foreground">7 days left in trial</span>
+          <Button size="sm" variant="link" className="p-0 h-auto text-primary">
             Upgrade
           </Button>
         </div>

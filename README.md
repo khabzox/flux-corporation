@@ -2,6 +2,14 @@
 
 A modern Next.js application with a rich UI built using Radix UI components, Tailwind CSS, and React. The project includes form validation, drag-and-drop functionality, and responsive layouts.
 
+## Color Scheme
+
+The application uses a custom blue color palette:
+
+- **Primary Blue**: `#005CE5` - Main brand color for buttons, links, and primary actions
+- **Dark Blue-Gray**: `#344051` - Text color and secondary elements
+- **Supporting Colors**: Various blue tints and shades derived from the primary palette
+
 ## Features
 
 - **UI Components**: Built with Radix UI primitives and styled with Tailwind CSS
@@ -18,10 +26,12 @@ A modern Next.js application with a rich UI built using Radix UI components, Tai
    ```bash
    git clone https://github.com/khabzox/flux-corporation
    ```
+
 2. Navigate to the project directory:
    ```bash
    cd flux-corporation
    ```
+
 3. Install dependencies using pnpm (recommended):
    ```bash
    pnpm install
@@ -85,4 +95,4 @@ This project is licensed under the [MIT License](LICENSE).
 - Radix UI for accessible primitives
 - Tailwind Labs for CSS framework
 - Vercel for Next.js framework
-- All open-source contributors of the dependencies used 
+- All open-source contributors of the dependencies used

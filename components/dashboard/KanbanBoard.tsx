@@ -186,7 +186,7 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
                       <p className="text-[#141C25] text-sm mb-3">No content currently. Board is empty</p>
 
                       <Button
-                        className="bg-blue-600 hover:bg-blue-600/90 h-[36px] w-[117px] rounded-2xl mt-4"
+                        className="bg-primary hover:bg-primary/90 h-[36px] w-[117px] rounded-2xl mt-4"
                         size="sm"
                         onClick={() => handleAddSection(column.id, 'card')}
                       >
