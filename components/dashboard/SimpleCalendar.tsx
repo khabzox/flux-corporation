@@ -179,7 +179,7 @@ export default function SimpleCalendar() {
     }, [currentDate])
 
     return (
-        <div className="max-w-6xl mx-auto p-6 bg-white">
+        <div className="w-full p-6 bg-white">
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
                 <div className="flex items-center gap-4">
