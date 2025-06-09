@@ -1,11 +1,14 @@
 "use client"
 
-import { format, parseISO, differenceInDays } from "date-fns"
 import { Clock, AlertCircle } from "lucide-react"
+
+import { format, parseISO, differenceInDays } from "date-fns"
+
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import SocialPlatformIcons from "./SocialPlatformIcons"
+
 import type { UpcomingDeadlinesProps } from "@/types"
 
 

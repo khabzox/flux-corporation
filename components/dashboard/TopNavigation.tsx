@@ -2,10 +2,12 @@
 
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import Icon from "@/lib/IconLibrary"
-import { cn } from "@/lib/utils"
-import type { TopNavigationProps } from "@/types"
+
 import { views } from "@/data/nav"
+
+import { cn } from "@/lib/utils"
+import Icon from "@/lib/IconLibrary"
+import type { TopNavigationProps } from "@/types"
 
 export default function TopNavigation({
   currentView,

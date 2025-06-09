@@ -1,10 +1,12 @@
 "use client"
 
+import Image from "next/image"
+import { useState } from "react"
+
 import Icon from "@/lib/IconLibrary"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import Image from "next/image"
-import { useState } from "react"
+
 import type { SidebarProps } from "@/types"
 
 export default function Sidebar({ searchQuery, onSearchChange }: SidebarProps) {

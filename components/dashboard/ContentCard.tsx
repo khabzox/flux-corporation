@@ -1,10 +1,14 @@
 "use client"
 
+import Image from "next/image"
 import { useState } from "react"
+
 import { Calendar, Clock, MessageCircle } from "lucide-react"
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import SocialPlatformIcons from "./SocialPlatformIcons"
-import Image from "next/image"
+
+
 import type { ContentCardProps } from "@/types"
 
 

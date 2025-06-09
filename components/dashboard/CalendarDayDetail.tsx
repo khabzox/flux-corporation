@@ -1,13 +1,15 @@
 "use client"
 
 import { format } from "date-fns"
+
 import { Clock, Plus } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
+import CalendarContentCard from "./CalendarContentCard"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import type { ContentItem } from "@/types"
-import CalendarContentCard from "./CalendarContentCard"
-import type { CalendarDayDetailProps } from "@/types"
+
+import type { ContentItem, CalendarDayDetailProps } from "@/types"
 
 export default function CalendarDayDetail({ date, items, onAddContent }: CalendarDayDetailProps) {
   // Group items by time

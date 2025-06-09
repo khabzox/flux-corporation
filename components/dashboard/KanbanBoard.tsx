@@ -1,13 +1,16 @@
 "use client"
 
+import Image from "next/image"
 import { useState, useRef, useEffect } from "react"
 import { Droppable, Draggable } from "@hello-pangea/dnd"
-import { Button } from "@/components/ui/button"
+
 import ContentCard from "./ContentCard"
-import type { Column, ContentItem } from "@/types"
-import Image from "next/image"
-import type { KanbanBoardProps, ContentCardProps } from "@/types"
 import { ColumnHeader } from "./ColumnHeader"
+import { Button } from "@/components/ui/button"
+
+import type { Column, ContentItem } from "@/types"
+
+import type { KanbanBoardProps, ContentCardProps } from "@/types"
 
 const WrappedContentCard = ({ item, onUpdate }: ContentCardProps) => {
   return <ContentCard item={item} onUpdate={onUpdate} />;

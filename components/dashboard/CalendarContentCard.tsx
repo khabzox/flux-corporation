@@ -1,10 +1,12 @@
 "use client"
 
 import { Clock } from "lucide-react"
-import { cn } from "@/lib/utils"
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import SocialPlatformIcons from "./SocialPlatformIcons"
+
+import { cn } from "@/lib/utils"
 import type { CalendarContentCardProps } from "@/types"
 
 

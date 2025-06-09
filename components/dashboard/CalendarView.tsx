@@ -13,22 +13,28 @@ import {
   parseISO,
   isToday,
 } from "date-fns"
+
 import { Draggable, Droppable } from "@hello-pangea/dnd"
+
 import { CalendarIcon, ChevronLeft, ChevronRight, Filter, Plus, Settings } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Skeleton } from "@/components/ui/skeleton"
-import { cn } from "@/lib/utils"
-import CalendarContentCard from "./CalendarContentCard"
-import CalendarDayDetail from "./CalendarDayDetail"
+
 import MiniCalendar from "./MiniCalendar"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import CalendarDayDetail from "./CalendarDayDetail"
+import { Skeleton } from "@/components/ui/skeleton"
 import UpcomingDeadlines from "./UpcomingDeadlines"
+import CalendarContentCard from "./CalendarContentCard"
 import CalendarContentStatistics from "./CalendarContentStatistics"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+
+import { cn } from "@/lib/utils"
 import type { CalendarViewProps } from "@/types"
+
 import { sampleCalendarContent } from "@/data/sample-calendar-content"
+
 import { convertSampleToContentItems } from "@/lib/getFormated"
 
 
