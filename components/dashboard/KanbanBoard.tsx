@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import ContentCard from "./ContentCard"
 import type { Column, ContentItem } from "@/types"
 import Icon from "@/lib/IconLibrary"
+import Image from "next/image"
 
 interface KanbanBoardProps {
   columns: Column[]
@@ -348,14 +349,12 @@ export default function KanbanBoard({ columns, onUpdateColumns, onUpdateContent 
                   {provided.placeholder}
                   {column.items.length === 0 && (
                     <div className="flex flex-col items-center justify-center py-8 text-gray-500">
-                      <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mb-3">
-                        <Plus className="w-6 h-6" />
-                      </div>
+                      <Image src="/file.svg" width={46} height={46} alt="empty file" />
 
-                      <p className="text-sm mb-3">No content currently. Board is empty</p>
+                      <p className="text-[#141C25] text-sm mb-3">No content currently. Board is empty</p>
 
                       <Button
-                        variant="outline"
+                        className="bg-blue-600 hover:bg-blue-600/90 h-[36px] w-[117px] rounded-2xl mt-4"
                         size="sm"
                         onClick={() => handleAddSection(column.id, 'card')}
                       >
